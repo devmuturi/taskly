@@ -1,4 +1,4 @@
-import { db } from './libs/dbConnect.js';
+import { db } from '../libs/dbConnect.js';
 import { ObjectId } from 'mongodb';
 
 const collection = db.collection('users');
