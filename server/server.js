@@ -5,7 +5,7 @@ const PORT = 8000;
 
 // Create a new '/api' route
 app.use('/api', (req, res) => {
-  res.status(200).json({ message: 'Hello world' });
+  res.status(200).json({ message: 'Hello world!' });
 });
 
 app.use('/', (req, res) => {
