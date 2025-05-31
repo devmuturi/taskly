@@ -4,6 +4,9 @@ import { db } from './libs/dbConnect.js'
 import userRouter from './routes/user.route.js'
 
 const app = express();
+
+app.use(express.json());
+
 const PORT = 8000;
 
 // Create a new '/api' route
