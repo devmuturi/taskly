@@ -22,3 +22,29 @@ export const getUser = async (req, res, next) => {
     next({ status: 500, error });
   }
 };
+
+
+export const updateUser = async(req, res, next) => {
+  try{
+    if(req.body.password) {
+      req.body.password = await bcrypt.hash(req.body.password, 10);
+    }
+
+    const query = { _id: new ObjectId(req.params.id) };
+    const data = {
+      $set: {
+        ...req.body,
+        updateAt: new Date().toISOString(),
+      },
+    };
+    const options = {
+      returnDocument: 'after',
+    };
+
+    const updatedUser = await collection.findOneAndUpdate(query, data, options);
+    const { password: pass, updateAt, createdAt, ...rest} = updatedUser;
+    res.status(200).json(updatedUser);
+  } catch(error) {
+    next({ status: 500, error})
+  }
+}
