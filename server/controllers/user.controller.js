@@ -48,3 +48,13 @@ export const updateUser = async(req, res, next) => {
     next({ status: 500, error})
   }
 }
+
+export const deleteUser = async (req, res) => {
+  try {
+    const query = { _id: new ObjectId(req.params.id) };
+    await collection.deleteOne(query);
+    res.status(200).json({ message: 'User has been deleted!' });
+  } catch(error) {
+    next({ status: 500, error });
+  }
+};
