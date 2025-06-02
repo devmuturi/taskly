@@ -12,7 +12,7 @@ const PORT = 8000;
 // Create a new '/api' route
 app.use('/api/v1/users', userRouter);
 
-app.use('/', (req, res) => {
+app.use((req, res) => {
   res.status(404).json({ message: 'not found' });
 });
 
