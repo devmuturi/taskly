@@ -43,7 +43,7 @@ export const updateUser = async(req, res, next) => {
 
     const updatedUser = await collection.findOneAndUpdate(query, data, options);
     const { password: pass, updateAt, createdAt, ...rest} = updatedUser;
-    res.status(200).json(updatedUser);
+    res.status(200).json(rest);
   } catch(error) {
     next({ status: 500, error})
   }
